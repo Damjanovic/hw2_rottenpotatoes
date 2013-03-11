@@ -21,11 +21,9 @@ class MoviesController < ApplicationController
         
     else
       @movies.push(Movie.all).flatten!
-      
       if session[:return_to]!=nil
-        redirect_to session[:return_to]
+        redirect_to session.delete(:return_to)
       end
-      
     end
     
     if params[:order]=='movie_order_asc'
